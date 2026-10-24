@@ -66,9 +66,36 @@ public class GameManager : MonoBehaviour
 
         if (selected.Count < 3) return;
 
-        ComboCalculator.Evaluate(selected.Select(c => c.Type).ToList());
+        bool valid = ComboCalculator.Evaluate(selected.Select(c => c.Type).ToList());
 
-        foreach (var c in selected) c.Selected = false;
+        if (valid)
+            ReplaceCards(selected.ToList());
+        else
+            foreach (var c in selected) c.Selected = false;
+
         selected.Clear();
+    }
+
+    private void ReplaceCards(List<Card> used)
+    {
+        foreach (var card in used)
+        {
+            card.Selected = false;
+
+            if (deck.Count > 0)
+            {
+                card.Type = deck.Draw();   // reuse the card object with a new face
+            }
+            else
+            {
+                // Deck is empty: the card is removed with no replacement
+                card.Clicked -= OnCardClicked;
+                card.RightClicked -= OnCardRightClicked;
+                hand.Remove(card);
+                Destroy(card.gameObject);
+            }
+        }
+
+        SortHand();
     }
 }

@@ -60,9 +60,11 @@ public static bool IsTriplet(IReadOnlyList<CardType> cards)
         return IsTriplet(cards) || IsSequence(cards);
     }
 
-    public static void Evaluate(IReadOnlyList<CardType> cards)
+    public static bool Evaluate(IReadOnlyList<CardType> cards)
     {
+        bool valid = ComboValid(cards);
         Debug.Log("Combo check: " + string.Join(", ", cards));
-        Debug.Log("Combo valid: " + ComboValid(cards));
+        Debug.Log("Combo valid: " + valid);
+        return valid;
     }
 }
