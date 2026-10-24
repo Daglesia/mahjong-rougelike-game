@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform handParent;
     [SerializeField] private int maxDiscards = 3;
 
+    [SerializeField] private ScoreManager scoreManager;
+
     private readonly List<Card> selected = new();
     private readonly List<Card> hand = new();
     private Deck deck;
@@ -66,10 +68,14 @@ public class GameManager : MonoBehaviour
 
         if (selected.Count < 3) return;
 
-        bool valid = ComboCalculator.Evaluate(selected.Select(c => c.Type).ToList());
+        var types = selected.Select(c => c.Type).ToList();
+        bool valid = ComboCalculator.Evaluate(types);
 
         if (valid)
+        {
+            scoreManager.Award(types);
             ReplaceCards(selected.ToList());
+        }
         else
             foreach (var c in selected) c.Selected = false;
 
