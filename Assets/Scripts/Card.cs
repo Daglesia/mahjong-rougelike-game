@@ -16,6 +16,15 @@ public class Card : MonoBehaviour, IPointerClickHandler
     private CardType type;
 
     public event Action<Card> Clicked;
+    public event Action<Card> RightClicked;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+            RightClicked?.Invoke(this);
+        else if (eventData.button == PointerEventData.InputButton.Left)
+            Clicked?.Invoke(this);
+    }
     public bool Selected { get; set; }
 
     public CardType Type
@@ -33,8 +42,6 @@ public class Card : MonoBehaviour, IPointerClickHandler
         var target = new Vector2(0f, Selected ? liftHeight : 0f);
         visual.anchoredPosition = Vector2.Lerp(visual.anchoredPosition, target, speed * Time.deltaTime);
     }
-
-    public void OnPointerClick(PointerEventData eventData) => Clicked?.Invoke(this);
 
     private static Dictionary<CardType, Sprite> Sprites
     {

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Thing9
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 
-  art: {fileID: 0}
+  art: {fileID: -53117115973079449, guid: 4b85149fa000ba047aa953455f3d8db0, type: 3}
   cardType: 26

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Bamboo3
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 
-  art: {fileID: 21300000, guid: 25b9e366e325e7d4a957d68c077a3bc9, type: 3}
+  art: {fileID: 2993659615207378316, guid: 4eecce09d2ddc274e8d10c0ccca52dfb, type: 3}
   cardType: 11

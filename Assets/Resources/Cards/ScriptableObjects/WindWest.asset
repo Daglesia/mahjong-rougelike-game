@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WindWest
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 
-  art: {fileID: 21300000, guid: 0f626dd9180530447a8caa0a5ea8d17d, type: 3}
+  art: {fileID: 990176540, guid: 0198ff91bc7c8fa4cbd28d2db143752f, type: 3}
   cardType: 29

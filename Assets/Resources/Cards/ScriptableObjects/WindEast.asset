@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WindEast
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 
-  art: {fileID: 21300000, guid: 535f61abc58e2cc4982bfe7a6cb4fa06, type: 3}
+  art: {fileID: 1247717238, guid: 0198ff91bc7c8fa4cbd28d2db143752f, type: 3}
   cardType: 27

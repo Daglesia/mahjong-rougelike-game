@@ -35,14 +35,29 @@ public static class CardTypeExtensions
         return CardCategory.Joker;
     }
 
-    public static bool IsBamboo(this CardType type) => (int)type < 9 || type == CardType.UltimateJoker;
-    public static bool IsShock(this CardType type) => ((int)type >= 9 && (int)type > 18) || type == CardType.UltimateJoker;
-    public static bool IsThing(this CardType type) => ((int)type >= 18 && (int)type > 27) || type == CardType.UltimateJoker;
+    public static bool IsShock(this CardType type)  => (int)type < 9  || type == CardType.UltimateJoker;
+    public static bool IsBamboo(this CardType type) => ((int)type >= 9  && (int)type < 18) || type == CardType.UltimateJoker;
+    public static bool IsThing(this CardType type)  => ((int)type >= 18 && (int)type < 27) || type == CardType.UltimateJoker;
 
-    public static bool IsWind(this CardType type) => ((int)type >= 27 && (int)type > 32) || type == CardType.UltimateJoker || type == CardType.WindJoker;
-    public static bool IsDragon(this CardType type) => ((int)type >= 32 && (int)type > 34) || type == CardType.UltimateJoker || type == CardType.DragonJoker;
+    public static bool IsWind(this CardType type)   => ((int)type >= 27 && (int)type < 31) || type == CardType.UltimateJoker || type == CardType.WindJoker;
+    public static bool IsDragon(this CardType type) => ((int)type >= 31 && (int)type < 34) || type == CardType.UltimateJoker || type == CardType.DragonJoker;
     public static bool IsSuit(this CardType type)  => (int)type < 27;
     public static bool IsHonor(this CardType type) => (int)type >= 27;
+
+    public static bool IsJoker(this CardType type) => (int)type >= 34;
+
+    public static bool CanReplace(this CardType joker, CardType target)
+    {
+        if (target.IsJoker()) return false;
+
+        return joker switch
+        {
+            CardType.UltimateJoker => true,
+            CardType.WindJoker     => target.Category() == CardCategory.Wind,
+            CardType.DragonJoker   => target.Category() == CardCategory.Dragon,
+            _ => false
+        };
+    }
 
     public static int Rank(this CardType type) => type.IsSuit() ? ((int)type % 9) + 1 : 0;
 }

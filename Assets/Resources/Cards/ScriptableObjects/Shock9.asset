@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shock9
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 
-  art: {fileID: 0}
+  art: {fileID: 8643791210477826723, guid: 6ddaa26a597c50246903ec41b0f06cec, type: 3}
   cardType: 8

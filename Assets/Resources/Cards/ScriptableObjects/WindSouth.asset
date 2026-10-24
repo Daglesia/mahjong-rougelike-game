@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WindSouth
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   cardName: 
-  art: {fileID: 21300000, guid: dce8695aafec39b4c92cde4c0c2c0e18, type: 3}
+  art: {fileID: -105534770, guid: 0198ff91bc7c8fa4cbd28d2db143752f, type: 3}
   cardType: 28
