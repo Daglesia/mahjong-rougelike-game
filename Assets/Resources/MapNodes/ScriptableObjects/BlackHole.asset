@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e8e066b25d0fe4f84d173c80a06e37, type: 3}
   m_Name: BlackHole
   m_EditorClassIdentifier: MahjongTesting::NodeData
-  id: 4
+  id: 1
   displayName: start
-  art: {fileID: -8668086447744435260, guid: 6ddaa26a597c50246903ec41b0f06cec, type: 3}
+  art: {fileID: -7564997713910450843, guid: e4ee62ab8a1b6bd4c9b217f0898a7c18, type: 3}
   kind: 2

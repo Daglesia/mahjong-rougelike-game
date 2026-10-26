@@ -5,10 +5,10 @@ using System.Linq;
 public static class MapGenerator
 {
     // Nodes per step (0-based): Start, 2 events, Fight, 2 events, Fight, 2 events, Fight.
-    private static readonly int[] Widths = { 1, 2, 1, 2, 1, 2, 1 };
+    private static readonly int[] Widths = { 1, 1, 2, 2, 1, 2, 2, 2, 1, 1 };
 
     // Forced fights, 0-based. These are your steps 3, 5, 7 counted from 1.
-    private static readonly HashSet<int> FightSteps = new() { 2, 4, 6 };
+    private static readonly HashSet<int> FightSteps = new() { 1, 4, 9 };
 
     public static MapData Generate(int seed, NodeData start, NodeData fight, IReadOnlyList<NodeData> eventPool)
     {
@@ -29,12 +29,27 @@ public static class MapGenerator
             steps.Add(column);
         }
 
-        // 2. Connections: every node links to every node in the next step.
-        // Correct for 1 -> 2 (split) and 2 -> 1 (converge). Wide -> wide would need real lane rules.
+        // 2. Connections:
+        //    - Different widths (1 -> 2 split, 2 -> 1 converge): connect everything to everything.
+        //    - Same width (e.g. 2 -> 2): connect lane to lane only, so upper stays upper
+        //      and lower stays lower and the paths never cross.
         for (int s = 0; s < steps.Count - 1; s++)
-            foreach (var from in steps[s])
-                foreach (var to in steps[s + 1])
-                    from.Connect(to);
+        {
+            var current = steps[s];
+            var nextStep = steps[s + 1];
+
+            if (current.Count == nextStep.Count)
+            {
+                for (int lane = 0; lane < current.Count; lane++)
+                    current[lane].Connect(nextStep[lane]);
+            }
+            else
+            {
+                foreach (var from in current)
+                    foreach (var to in nextStep)
+                        from.Connect(to);
+            }
+        }
 
         // 3. Content: fixed steps first by rule, free steps from the seeded RNG.
         // Own RNG, never shared with the Deck. Fixed iteration order keeps it deterministic.

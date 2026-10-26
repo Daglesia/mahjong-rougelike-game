@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e8e066b25d0fe4f84d173c80a06e37, type: 3}
   m_Name: Shop
   m_EditorClassIdentifier: MahjongTesting::NodeData
-  id: 3
-  displayName: start
-  art: {fileID: 8643791210477826723, guid: 6ddaa26a597c50246903ec41b0f06cec, type: 3}
-  kind: 2
+  id: 4
+  displayName: shop
+  art: {fileID: 8576803902077363367, guid: b98a3b56167a09044823ced70e047b30, type: 3}
+  kind: 3

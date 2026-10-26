@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: MahjongTesting::NodeData
   id: 2
   displayName: start
-  art: {fileID: -6033167070654062095, guid: 6ddaa26a597c50246903ec41b0f06cec, type: 3}
+  art: {fileID: 7024648501981196136, guid: c886100871c423a4c95c73a9a64c03e7, type: 3}
   kind: 1
